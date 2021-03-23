@@ -15,7 +15,11 @@ public class DripIrrigation {
 
     public Flux<Drop> followDrops() {
         //TODO Create a Flux that would emit a Drop every 20 millis seconds
-        Flux<Drop> dropFlux = Flux.interval(Duration.ofMillis(20)).map(d-> Drop.builder().build());
-        return dropFlux;
+        return Flux
+                .interval(Duration.ofMillis(20))
+                .map(d-> Drop.builder().greenHouseId(1)
+                        .rowId(1).dropperId(1)
+                        .instant(Instant.now())
+                        .build());
     }
 }
