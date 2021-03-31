@@ -10,6 +10,7 @@ import reactor.core.publisher.Mono;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.UUID;
 
 @Component
 public class DripIrrigation {
@@ -45,7 +46,7 @@ public class DripIrrigation {
         //TODO use the GreenHouseProducer.getDropper() function to find the Dropper information wrap in a Greenhouse
         //TODO    then map it to build a DetailedDrop
         return GreenHouseProducer.getDropper(drop.getGreenHouseId(), drop.getRowId(), drop.getDropperId())
-                .map(greenHouse -> DetailedDrop.builder().instant(Instant.now()).greenHouse(greenHouse).build());
+                .map(greenHouse -> DetailedDrop.builder().uuid(UUID.randomUUID().toString()).instant(Instant.now()).greenHouse(greenHouse).build());
 
     }
 
